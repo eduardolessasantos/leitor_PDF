@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+#container {
+    display: flex;
+    height: 100vh;
+}
+
+#tree {
+    width: 30%;
+    overflow-y: auto;
+    background-color: #fff;
+    border-right: 1px solid #e0e0e0;
+    padding: 10px;
+}
+
+#viewer {
+    width: 70%;
+    overflow-y: auto;
+}
+
+.folder,
+.file {
+    padding: 5px 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    margin-bottom: 3px;
+    background-color: #e0e0e0;
+    font-size: 14px;
+}
+
+.folder:hover,
+.file:hover {
+    background-color: #d0d0d0;
+}
+
+.arrow {
+    margin-right: 8px;
+    width: 14px;
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+}
+
+.icon {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.hidden {
+    display: none;
+}
