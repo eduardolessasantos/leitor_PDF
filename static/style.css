@@ -56,3 +56,123 @@ body {
 .hidden {
     display: none;
 }
+
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.pdf-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: box-shadow 0.3s;
+}
+
+.pdf-card:hover {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.pdf-card-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.pdf-card-title {
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.pdf-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.pdf-actions button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.pdf-actions button:hover {
+    background-color: #2980b9;
+}
+
+#top-bar {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    gap: 10px;
+}
+
+#select-folder-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#select-folder-btn:hover {
+    background-color: #2980b9;
+}
+
+#selected-folder-info {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Botão bonito substituindo <input type="file"> */
+.custom-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.custom-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Footer fixo */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #555;
+    border-top: 1px solid #ccc;
+}

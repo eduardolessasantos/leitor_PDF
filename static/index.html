@@ -10,6 +10,18 @@
 </head>
 
 <body>
+    <div id="top-bar">
+        <label for="folderPicker" class="custom-btn">📂 Selecionar Pasta</label>
+        <input type="button" id="folderPicker" style="display:none;">
+        <span id="selected-folder-info"></span>
+    </div>
+
+
+    <div style="background-color: #e8f0fe; padding: 10px; margin-bottom: 10px; border-radius: 8px; font-size: 14px;">
+        📄 Apenas pastas e subpastas que contenham documentos do tipo PDF serão exibidas.
+    </div>
+
+
     <div id="container">
         <div id="tree"></div>
         <div id="viewer">
@@ -24,6 +36,9 @@
         </div>
     </div>
     <script src="static/script.js"></script>
+    <footer>
+        Desenvolvido por Eduardo Lessa © 2025
+    </footer>
 </body>
 
 </html>
