@@ -7,7 +7,8 @@ app = Flask(__name__, static_folder='static')
 CORS(app)
 
 # Altere aqui se o caminho for diferente
-BASE_DIR = r"C:\\Users\\Eduardo\\Documents\\Concurso_Niteroi\\Analista_Informatica_ION_RJ_2025\\01-Apostilas"
+#BASE_DIR = r"C:\\Users\\Eduardo\\Documents\\Concurso_Niteroi\\Analista_Informatica_ION_RJ_2025\\01-Apostilas"
+BASE_DIR = os.path.join(os.path.dirname(__file__), 'pdfs')
 
 @app.route('/')
 def index():
@@ -47,4 +48,4 @@ def directory_structure():
     return jsonify(get_structure(directory))
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(host='0.0.0.0', port=10000)
