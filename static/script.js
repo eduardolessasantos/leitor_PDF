@@ -72,6 +72,29 @@ function buildTree(data, container, level = 0) {
                 actionsDiv.appendChild(btnResumo);
                 card.appendChild(actionsDiv);
             };
+
+            // Botões de extra
+            const btnsDiv = document.createElement('div');
+            btnsDiv.style.marginTop = '5px';
+            btnsDiv.style.paddingLeft = '20px';
+
+            const btnAudio = document.createElement('button');
+            btnAudio.textContent = '🔊 Ouvir';
+            btnAudio.onclick = (e) => {
+                e.stopPropagation();
+                tocarAudio(item.path);
+            };
+
+            const btnResumo = document.createElement('button');
+            btnResumo.textContent = '🧠 Resumir';
+            btnResumo.onclick = (e) => {
+                e.stopPropagation();
+                gerarResumo(item.path);
+            };
+
+            btnsDiv.appendChild(btnAudio);
+            btnsDiv.appendChild(btnResumo);
+            wrapper.appendChild(btnsDiv);
         }
 
         container.appendChild(card);
