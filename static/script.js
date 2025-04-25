@@ -1,5 +1,8 @@
 const treeContainer = document.getElementById('tree');
 const pdfViewer = document.getElementById('pdfViewer');
+const audioPlayer = document.getElementById('audioPlayer');
+const resumoBox = document.getElementById('resumoBox');
+const resumoTexto = document.getElementById('resumoTexto');
 
 function fetchDirectoryStructure() {
     fetch('/directory_structure')
@@ -46,7 +49,31 @@ function buildTree(data, container, level = 0) {
         } else {
             div.onclick = () => {
                 viewPDF(item.path);
+                clearExtras();
             };
+
+            // Botões de extra
+            const btnsDiv = document.createElement('div');
+            btnsDiv.style.marginTop = '5px';
+            btnsDiv.style.paddingLeft = '20px';
+
+            const btnAudio = document.createElement('button');
+            btnAudio.textContent = '🔊 Ouvir';
+            btnAudio.onclick = (e) => {
+                e.stopPropagation();
+                tocarAudio(item.path);
+            };
+
+            const btnResumo = document.createElement('button');
+            btnResumo.textContent = '🧠 Resumir';
+            btnResumo.onclick = (e) => {
+                e.stopPropagation();
+                gerarResumo(item.path);
+            };
+
+            btnsDiv.appendChild(btnAudio);
+            btnsDiv.appendChild(btnResumo);
+            wrapper.appendChild(btnsDiv);
         }
         container.appendChild(wrapper);
     });
@@ -55,6 +82,33 @@ function buildTree(data, container, level = 0) {
 function viewPDF(path) {
     const relativePath = path.replace(/\\/g, '/');
     pdfViewer.src = `/pdf/${relativePath}`;
+}
+
+function tocarAudio(path) {
+    audioPlayer.src = `/audio_pdf?path=${encodeURIComponent(path)}`;
+    audioPlayer.style.display = 'block';
+    audioPlayer.play();
+}
+
+function gerarResumo(path) {
+    resumoTexto.textContent = 'Gerando resumo...';
+    resumoBox.style.display = 'block';
+    fetch(`/resumo_pdf?path=${encodeURIComponent(path)}`)
+        .then(res => res.json())
+        .then(data => {
+            resumoTexto.textContent = data.resumo;
+        })
+        .catch(err => {
+            resumoTexto.textContent = 'Erro ao gerar resumo.';
+        });
+}
+
+function clearExtras() {
+    audioPlayer.pause();
+    audioPlayer.src = '';
+    audioPlayer.style.display = 'none';
+    resumoBox.style.display = 'none';
+    resumoTexto.textContent = '';
 }
 
 document.addEventListener("DOMContentLoaded", fetchDirectoryStructure);

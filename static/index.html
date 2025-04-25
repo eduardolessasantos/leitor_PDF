@@ -13,10 +13,16 @@
     <div id="container">
         <div id="tree"></div>
         <div id="viewer">
-            <embed id="pdfViewer" src="" type="application/pdf" width="100%" height="100%" />
+            <embed id="pdfViewer" src="" type="application/pdf" width="100%" height="80%" />
+            <div id="controls">
+                <audio id="audioPlayer" controls style="display:none; margin-top: 10px;"></audio>
+                <div id="resumoBox" style="display:none; margin-top: 10px;">
+                    <h3>Resumo</h3>
+                    <p id="resumoTexto"></p>
+                </div>
+            </div>
         </div>
     </div>
-
     <script src="static/script.js"></script>
 </body>
 
