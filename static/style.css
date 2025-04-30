@@ -24,3 +24,9 @@ footer {
     font-size: 0.9em;
     color: #888;
 }
+
+.loading-msg {
+    font-style: italic;
+    color: #666;
+    margin-top: 8px;
+}

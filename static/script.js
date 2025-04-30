@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 arquivos.forEach(filename => {
                     const div = document.createElement("div");
                     div.classList.add("card");
+                    div.setAttribute("data-filename", filename);
                     div.innerHTML = `
               <p><strong>${filename}</strong></p>
               <button onclick="verPDF('${filename}')">📄 Ver</button>
@@ -38,20 +39,46 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     window.verPDF = (filename) => {
-        window.open("/pdf/" + encodeURIComponent(filename), "_blank");
+        const iframeId = "iframe-" + filename;
+        let existing = document.getElementById(iframeId);
+        if (existing) {
+            existing.remove(); // Alterna visibilidade
+        } else {
+            const iframe = document.createElement("iframe");
+            iframe.id = iframeId;
+            iframe.src = "/pdf/" + encodeURIComponent(filename);
+            iframe.width = "100%";
+            iframe.height = "500px";
+            iframe.style.marginTop = "10px";
+            document.querySelector(`.card[data-filename="${filename}"]`).appendChild(iframe);
+        }
     };
 
     window.tocarAudio = (filename) => {
+        const card = document.querySelector(`.card[data-filename="${filename}"]`);
+        const loading = document.createElement("p");
+        loading.innerText = "⏳ Carregando áudio...";
+        loading.className = "loading-msg";
+        card.appendChild(loading);
+
         fetch(`/audio_pdf?filename=${encodeURIComponent(filename)}`)
             .then(res => res.json())
             .then(data => {
+                loading.remove();
                 if (data.audio_url) {
                     audioPlayer.src = data.audio_url + `?t=${Date.now()}`;
                     audioPlayer.style.display = 'block';
                     audioPlayer.play();
+                } else {
+                    alert("Erro ao carregar áudio.");
                 }
+            })
+            .catch(() => {
+                loading.remove();
+                alert("Erro ao carregar áudio.");
             });
     };
+
 
     window.resumirPDF = (filename) => {
         fetch(`/resumo_pdf?filename=${encodeURIComponent(filename)}`)
