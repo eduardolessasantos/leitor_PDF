@@ -67,10 +67,13 @@ def audio_pdf():
             for page in doc:
                 texto += page.get_text()
 
+        if not texto.strip():
+            return jsonify({'error': 'Nenhum texto extraível encontrado no PDF'}), 400
+
         safe_filename = os.path.splitext(filename)[0] + ".mp3"
         audio_path = os.path.join('static', safe_filename)
 
-        tts = gTTS(text=texto, lang='pt')
+        tts = gTTS(text=texto[:4000], lang='pt')
         tts.save(audio_path)
         return jsonify({'audio_url': f"/static/{safe_filename}"})
     except Exception as e:
@@ -93,7 +96,8 @@ def resumo_pdf():
                 texto += page.get_text()
 
         texto_cortado = texto[:2000]
-        response = openai.ChatCompletion.create(
+        client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "Você é um assistente que resume textos de forma clara e objetiva."},
