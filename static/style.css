@@ -1,178 +1,26 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
+    margin: 20px;
 }
 
-#container {
-    display: flex;
-    height: 100vh;
+form {
+    margin-bottom: 20px;
 }
 
-#tree {
-    width: 30%;
-    overflow-y: auto;
-    background-color: #fff;
-    border-right: 1px solid #e0e0e0;
-    padding: 10px;
-}
-
-#viewer {
-    width: 70%;
-    overflow-y: auto;
-}
-
-.folder,
-.file {
-    padding: 5px 10px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    border-radius: 8px;
-    margin-bottom: 3px;
-    background-color: #e0e0e0;
-    font-size: 14px;
-}
-
-.folder:hover,
-.file:hover {
-    background-color: #d0d0d0;
-}
-
-.arrow {
-    margin-right: 8px;
-    width: 14px;
-    display: inline-block;
-    text-align: center;
-    font-size: 12px;
-}
-
-.icon {
-    margin-right: 8px;
-    font-size: 16px;
-}
-
-.hidden {
-    display: none;
-}
-
-.spinner {
-    border: 8px solid #f3f3f3;
-    border-top: 8px solid #3498db;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.pdf-card {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+.card {
+    border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 10px;
-    transition: box-shadow 0.3s;
-}
-
-.pdf-card:hover {
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.pdf-card-header {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.pdf-card-title {
-    margin-left: 10px;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.pdf-actions {
-    margin-top: 10px;
-    display: flex;
-    gap: 10px;
-}
-
-.pdf-actions button {
-    padding: 6px 12px;
-    border: none;
     border-radius: 5px;
-    background-color: #3498db;
-    color: white;
-    cursor: pointer;
-    font-size: 14px;
 }
 
-.pdf-actions button:hover {
-    background-color: #2980b9;
+button {
+    margin-right: 5px;
 }
 
-#top-bar {
-    display: flex;
-    align-items: center;
-    margin: 10px;
-    gap: 10px;
-}
-
-#select-folder-btn {
-    background-color: #3498db;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#select-folder-btn:hover {
-    background-color: #2980b9;
-}
-
-#selected-folder-info {
-    font-size: 14px;
-    color: #333;
-}
-
-/* Botão bonito substituindo <input type="file"> */
-.custom-btn {
-    background-color: #3498db;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.custom-btn:hover {
-    background-color: #2980b9;
-}
-
-/* Footer fixo */
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #f4f4f4;
+    margin-top: 40px;
     text-align: center;
-    padding: 10px;
-    font-size: 14px;
-    color: #555;
-    border-top: 1px solid #ccc;
+    font-size: 0.9em;
+    color: #888;
 }
