@@ -9,8 +9,6 @@ import json
 import openai
 import atexit
 from urllib.parse import unquote
-from dotenv import load_dotenv
-load_dotenv()
 
 BASE_DIR_DYNAMIC = None
 
